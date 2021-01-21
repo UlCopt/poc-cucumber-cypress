@@ -8,4 +8,6 @@ export default {
   LOG_LEVEL: process.env.LOG_LEVEL || "info",
   LOG_FILE: process.env.LOG_FILE || "app.log",
   // #endregion logs
+
+  FACTORIAL_API_DOMAIN: process.env.FACTORIAL_API_DOMAIN,
 };
