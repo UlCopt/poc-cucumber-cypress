@@ -1,0 +1,7 @@
+node_modules
+logs
+.env
+reports/*.json
+reports/*.html
+.idea/
+build/
