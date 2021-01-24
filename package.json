@@ -10,7 +10,8 @@
     "tsc-init": "tsc --init",
     "tsc": "tsc",
     "report": "ts-node src/reporters/cucumber-html-reporter.ts",
-    "testing": "npm run cucumber -- --tags @testing"
+    "testingWeb": "npm run cucumber -- --tags @testingWeb",
+    "testingApi": "npm run cucumber -- --tags @testingAPI"
   },
   "keywords": [],
   "author": "",
@@ -31,11 +32,14 @@
   "dependencies": {
     "@types/chai": "4.2.14",
     "@types/cucumber": "6.0.1",
+    "@types/node-fetch": "^2.5.8",
+    "@types/selenium-webdriver": "4.0.11",
     "axios": "0.21.1",
     "chai": "4.2.0",
     "cucumber": "6.0.5",
     "cucumber-html-reporter": "5.2.0",
     "cucumber-pretty": "6.0.0",
-    "log4js": "6.3.0"
+    "log4js": "6.3.0",
+    "selenium-webdriver": "4.0.0-alpha.8"
   }
 }

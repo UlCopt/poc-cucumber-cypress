@@ -9,10 +9,8 @@ AfterAll(function () {
   logger.info("End test scenarios");
 });
 
-Before({ tags: "@testing" }, async function () {
-  logger.info("Start testing tag");
-});
+Before({ tags: "@testing" }, async function () {});
 
-After({ tags: "@testing" }, async function () {
-  logger.info("End testing tag");
+After({ tags: "@testingWeb" }, async function () {
+  return this.driver.quit();
 });
