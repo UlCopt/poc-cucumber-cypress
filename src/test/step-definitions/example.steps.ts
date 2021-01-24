@@ -30,39 +30,39 @@ Then("Verify the value on page", { timeout: 60 * 1000 }, async function () {
   assert.equal(`The factorial of ${this.value} is: ${valueExpected}`, messageExpected);
 });
 
-Then("Verify the {int}", async function (valueExpected) {
+Then("Verify the {int}", { timeout: 60 * 1000 }, async function (valueExpected) {
   assert.equal(this.resultActual, valueExpected, "Fail. Error on value expected on api factorial");
 });
 
-Then("Try to calculate factorial with a {int} on page", async function (invalidValue) {
+Then("Try to calculate factorial with a {int} on page", { timeout: 60 * 1000 }, async function (invalidValue) {
   await this.factorialPage.enterFactorial(invalidValue);
   await this.factorialPage.calculate();
   const messageActual = await this.factorialPage.getMessageResult();
   assert.equal(messageActual, "Please enter an integer", "Fail. Error message expected not found");
 });
 
-Then("Try to calculate factorial with a {string} on page", async function (invalidValue) {
+Then("Try to calculate factorial with a {string} on page", { timeout: 60 * 1000 }, async function (invalidValue) {
   await this.factorialPage.enterFactorial(invalidValue);
   await this.factorialPage.calculate();
   const messageActual = await this.factorialPage.getMessageResult();
   assert.equal(messageActual, "Please enter an integer", "Fail. Error message expected not found");
 });
 
-Then("Verify the visual elements on web", async function () {
+Then("Verify the visual elements on web", { timeout: 60 * 1000 }, async function () {
   const titleActual = await this.factorialPage.getTitlePage();
   const titleBrowserActual = await this.factorialPage.getTitleBrowser();
   assert.equal(titleActual, "The greatest factorial calculator!", "Fail. Error title expected not found");
   assert.equal(titleBrowserActual, "Factorial", "Fail. Error title browser expected not found");
 });
 
-Then("Verify terms and conditions", async function () {
+Then("Verify terms and conditions", { timeout: 60 * 1000 }, async function () {
   await this.factorialPage.openTerms();
   const termsAndConditionsActual = await this.factorialPage.getTermsAndConditions();
   const termsAndConditionsExpected = await getTermsAndConditions();
   assert.equal(termsAndConditionsActual, termsAndConditionsExpected, "Fail. Error message terms and conditions expected not found");
 });
 
-Then("Verify privacy", async function () {
+Then("Verify privacy", { timeout: 60 * 1000 }, async function () {
   await this.factorialPage.openPrivacy();
   const privacyActual = await this.factorialPage.getPrivacy();
   const privacyExpected = await getPrivacy();
