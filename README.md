@@ -13,6 +13,9 @@ POC project: cucumber js - typescript - nodejs - selenium js
 
 ### Prerequisites
 
+chrome version: 88.0.4324.96
+firefox version: 84.0.2
+
 What things you need to install the software and how to install them.
 
 Webdrivers: chrome and firefox only for macos, if you want runner on another OS, make sure download the webdriver required for that system
