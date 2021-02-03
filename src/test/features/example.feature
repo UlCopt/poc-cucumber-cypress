@@ -1,66 +1,56 @@
 Feature: Example
 
-@testingWeb
+  @testingWeb
   Scenario Outline: Verify calculate on UI factorial  web
-    Given A <url> and a <browser>
+    Given Open the <url> page
     When Put the <factorial> value on page
     Then Verify the value on page
   Examples:
-    |url|factorial|browser|
-    | "http://qainterview.pythonanywhere.com/"  |  0 |  "chrome"|
-    | "http://qainterview.pythonanywhere.com/"  |  1 |  "chrome"|
-    | "http://qainterview.pythonanywhere.com/"  |  10 |  "chrome"|
-    | "http://qainterview.pythonanywhere.com/"  |  100 |  "chrome"|
-    | "http://qainterview.pythonanywhere.com/"  |  989 |  "chrome"|
-    | "http://qainterview.pythonanywhere.com/"  |  990 |  "chrome"|
-    | "http://qainterview.pythonanywhere.com/"  |  0 |  "firefox"|
-    | "http://qainterview.pythonanywhere.com/"  |  1 |  "firefox"|
-    | "http://qainterview.pythonanywhere.com/"  |  10 |  "firefox"|
-    | "http://qainterview.pythonanywhere.com/"  |  100 |  "firefox"|
-    | "http://qainterview.pythonanywhere.com/"  |  989 |  "firefox"|
-    | "http://qainterview.pythonanywhere.com/"  |  990 |  "firefox"|
+    |url|factorial|
+    | "http://qainterview.pythonanywhere.com"  |  0 |
+    | "http://qainterview.pythonanywhere.com"  |  1 |
+    | "http://qainterview.pythonanywhere.com"  |  10 |
+    | "http://qainterview.pythonanywhere.com"  |  100 |
+    | "http://qainterview.pythonanywhere.com"  |  989 |
+    | "http://qainterview.pythonanywhere.com"  |  990 |
 
 
-@testingWeb
+
+  @testingWeb
   Scenario Outline: Verify calculate on UI factorial  web
-    Given A <url> and a <browser>
+  Given Open the <url> page
     Then Try to calculate factorial with a <invalidValue> on page
     Examples:
-      |url|browser| invalidValue|
-      | "http://qainterview.pythonanywhere.com/"  | "chrome"| "A"|
-      | "http://qainterview.pythonanywhere.com/"  | "chrome"| " "|
-      | "http://qainterview.pythonanywhere.com/"  | "chrome"| -1 |
-      | "http://qainterview.pythonanywhere.com/"  | "firefox"| "A"|
-      | "http://qainterview.pythonanywhere.com/"  | "firefox"| " "|
-      | "http://qainterview.pythonanywhere.com/"  | "firefox"| -1 |
+      |url| invalidValue|
+      | "http://qainterview.pythonanywhere.com"  |  "A"|
+      | "http://qainterview.pythonanywhere.com"  | " "|
+      | "http://qainterview.pythonanywhere.com"  | -1 |
 
 
   @testingWeb
   Scenario Outline: Verify UI factorial home page
-    Given A <url> and a <browser>
+    Given Open the <url> page
     Then Verify the visual elements on web
     Examples:
-      |url|browser|
-      | "http://qainterview.pythonanywhere.com/"  | "chrome"|
-      | "http://qainterview.pythonanywhere.com/"  | "firefox"|
+      |url|
+      | "http://qainterview.pythonanywhere.com/"  |
+
 
   @testingWeb
   Scenario Outline: Verify UI factorial privacy
-    Given A <url> and a <browser>
+    Given Open the <url> page
     Then Verify privacy
     Examples:
-      |url|browser|
-      | "http://qainterview.pythonanywhere.com/"  | "chrome"|
-      | "http://qainterview.pythonanywhere.com/"  | "firefox"|
+      |url|
+      | "http://qainterview.pythonanywhere.com/"  |
 
   @testingWeb
   Scenario Outline: Verify calculate on UI factorial  web
-    Given A <url> and a <browser>
+    Given Open the <url> page
     Then Verify terms and conditions
     Examples:
-      |url|browser|
-      | "http://qainterview.pythonanywhere.com/"  | "chrome"|
-      | "http://qainterview.pythonanywhere.com/"  | "firefox"|
+      |url|
+      | "http://qainterview.pythonanywhere.com/"  |
 
 
   @testingAPI

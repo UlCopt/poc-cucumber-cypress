@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cucumber": "node ./node_modules/cucumber/bin/cucumber-js src/test/features/**/*.feature --no-color --foo=bar --logLevel=error --require src/test/step-definitions/**/*.ts --require src/test/hooks/**/*.ts --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format json:src/reports/cucumber-report.json --format summary --format progress-bar --format node_modules/cucumber-pretty",
+    "cucumber": "node ./node_modules/cucumber/bin/cucumber-js src/test/features/**/*.feature --no-strict  --no-color --foo=bar --logLevel=error --require src/test/support/world.ts --require src/test/step-definitions/**/*.ts --require src/test/hooks/**/*.ts --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format json:src/reports/cucumber-report.json --format summary --format progress-bar --format node_modules/cucumber-pretty",
     "snippets": "node ./node_modules/cucumber/bin/cucumber-js src/test/features/**/*.feature --dry-run --no-color --require src/test/step-definitions/**/*.ts  --require-module ts-node/register --format-options \"{\\\"snippetInterface\\\": \\\"async-await\\\"}\" --format snippets",
     "test": "npm run cucumber",
     "tsc-init": "tsc --init",
     "tsc": "tsc",
     "report": "ts-node src/reporters/cucumber-html-reporter.ts",
     "testingWeb": "npm run cucumber -- --tags @testingWeb",
-    "testingApi": "npm run cucumber -- --tags @testingAPI"
+    "testingApi": "npm run cucumber -- --tags @testingAPI",
+    "firefox": "npm run testingWeb -- --world-parameters \"{\\\"browser\\\": \\\"firefox\\\"}\"",
+    "chrome": "npm run testingWeb -- --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\"",
+    "format": "prettier --write \"**/*.ts\""
   },
   "keywords": [],
   "author": "",
@@ -25,6 +28,7 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
+    "prettier": "2.2.1",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
     "typescript": "4.1.3"

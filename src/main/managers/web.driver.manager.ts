@@ -1,26 +1,36 @@
-import path from "path";
-import { Builder, WebDriver } from "selenium-webdriver";
-import { ServiceBuilder as serviceChrome } from "selenium-webdriver/chrome";
-import { ServiceBuilder as firefox } from "selenium-webdriver/firefox";
+import path from 'path';
+import { Builder, WebDriver } from 'selenium-webdriver';
+import { ServiceBuilder as ServiceChrome } from 'selenium-webdriver/chrome';
+import { ServiceBuilder as ServiceFirefox } from 'selenium-webdriver/firefox';
 
-const chromeDriverPath = path.join(__dirname, "../../@common/configuration/browser-drivers/chrome/chromedriver");
-const geckoDriverPath = path.join(__dirname, "../../@common/configuration/browser-drivers/firefox/geckodriver");
+const chromeDriverPath = path.join(
+    __dirname,
+    '../../@common/configuration/browser-drivers/chrome/chromedriver'
+);
+const geckoDriverPath = path.join(
+    __dirname,
+    '../../@common/configuration/browser-drivers/firefox/geckodriver'
+);
 
 export class WebDriverManager {
-  public async getDriver(driverName: string): Promise<WebDriver> {
-    return await WebDriverManager.createDriver(driverName);
-  }
-
-  private static async createDriver(driverName: string): Promise<WebDriver> {
-    switch (driverName) {
-      case "chrome":
-        const serviceBuilderChrome = new serviceChrome(chromeDriverPath);
-        return new Builder().forBrowser("chrome").setChromeService(serviceBuilderChrome).build();
-      case "firefox":
-        const serviceBuilderFirefox = new firefox(geckoDriverPath);
-        return new Builder().forBrowser("firefox").setFirefoxService(serviceBuilderFirefox).build();
-      default:
-        throw Error(`Fail: driver name not found: ${driverName}`);
+    public static getDriver(driverName: string): WebDriver {
+        return WebDriverManager.createDriver(driverName);
     }
-  }
+
+    private static createDriver(driverName: string): WebDriver {
+        switch (driverName) {
+            case 'chrome':
+                return new Builder()
+                    .forBrowser('chrome')
+                    .setChromeService(new ServiceChrome(chromeDriverPath))
+                    .build();
+            case 'firefox':
+                return new Builder()
+                    .forBrowser('firefox')
+                    .setFirefoxService(new ServiceFirefox(geckoDriverPath))
+                    .build();
+            default:
+                throw Error(`Fail: driver name not found: ${driverName}`);
+        }
+    }
 }

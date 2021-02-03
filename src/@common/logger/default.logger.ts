@@ -1,22 +1,25 @@
-import { configure, getLogger } from "log4js";
-import { environment } from "../configuration/environment";
+import { configure, getLogger } from 'log4js';
+import { environment } from '../configuration/environment';
 
 // appenders
 configure({
-  appenders: {
-    console: { type: "stdout", layout: { type: "colored" } },
-    dateFile: {
-      type: "dateFile",
-      filename: `${environment.logDir}/${environment.logFile}`,
-      layout: { type: "basic" },
-      compress: true,
-      daysToKeep: 1,
-      keepFileExt: true,
+    appenders: {
+        console: { type: 'stdout', layout: { type: 'colored' } },
+        dateFile: {
+            type: 'dateFile',
+            filename: `${environment.logDir}/${environment.logFile}`,
+            layout: { type: 'basic' },
+            compress: true,
+            daysToKeep: 1,
+            keepFileExt: true,
+        },
     },
-  },
-  categories: {
-    default: { appenders: ["console", "dateFile"], level: environment.logLevel },
-  },
+    categories: {
+        default: {
+            appenders: ['console', 'dateFile'],
+            level: environment.logLevel,
+        },
+    },
 });
 
 // fetch logger and export
